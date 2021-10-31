@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.course-card:hover {
+  box-shadow: 0 10px 40px -12px pink;
+}
+
+.menu {
+  background: deepskyblue;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.menu-button {
+  margin-left: 50px;
+}
+
+.flex {
+  display: flex;
+}
