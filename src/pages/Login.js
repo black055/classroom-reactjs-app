@@ -37,7 +37,7 @@ function Login() {
                 setConfirmError(true);
             }
         }).catch(function(error) {
-            console.log('Error on Authentication');
+            console.log(error);
         });
     }
 

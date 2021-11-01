@@ -35,7 +35,7 @@ function Register() {
                     setExistedError(true);
                 }
             }).catch(function(error) {
-                console.log('Error on Register');
+                console.log(error);
             });
         }
     }
