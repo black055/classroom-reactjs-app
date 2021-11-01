@@ -6,8 +6,8 @@ import { Grid } from '@material-ui/core';
 function CoursesList() {
     const [courses, setCourses] = useState([]);
     
-    //const apiUrl = "https://btcn-3-webnc.herokuapp.com"
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://btcn-3-webnc.herokuapp.com"
+    //const apiUrl = "http://localhost:3000";
 
     useEffect(() => {
         fetch(`${apiUrl}/courses`)

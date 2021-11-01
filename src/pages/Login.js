@@ -9,8 +9,8 @@ import Cookies from 'universal-cookie';
 
 
 function Login() {
-    //const apiUrl = "https://btcn-3-webnc.herokuapp.com";
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://btcn-3-webnc.herokuapp.com";
+    //const apiUrl = "http://localhost:3000";
 
     const cookies = new Cookies();
     const { register, handleSubmit } = useForm();

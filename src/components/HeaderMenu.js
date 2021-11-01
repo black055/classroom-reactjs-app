@@ -29,8 +29,8 @@ import {
 import MuiAlert from '@mui/material/Alert';
 
 function HeaderMenu({ isLoggedIn, user, handleLogout }) {
-    //const apiUrl = "https://btcn-3-webnc.herokuapp.com";
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://btcn-3-webnc.herokuapp.com";
+    //const apiUrl = "http://localhost:3000";
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [openPopup, setOpenPopup] = React.useState(false);

@@ -1,37 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
-import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core'
+import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core';
+import { Alert } from '@mui/material';
 import PersonSharpIcon from '@mui/icons-material/PersonSharp';
 import axios from "axios";
 import Cookies from 'universal-cookie';
 
 function Login() {
-    //const apiUrl = "https://btcn-3-webnc.herokuapp.com";
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://btcn-3-webnc.herokuapp.com";
+    //const apiUrl = "http://localhost:3000";
 
     const { register, handleSubmit } = useForm();
+    const [existedError, setExistedError] = useState(false);
+    const [confirmError, setConfirmError] = useState(false);
 
     const cookies = new Cookies();
 
     const handleSubmitSignUp = (data) => {
-        axios.post(`${apiUrl}/users/register`, {
-            firstname: data.firstname,
-            lastname: data.lastname,
-            username: data.username,
-            password: data.password
-        }).then(res => {
-            if (res.data){
-                cookies.set('token', res.data.token);
-                window.location.replace('/');
-            } else {
-                console.log('Tên đăng nhập đã tồn tại');
-            }
-        }).catch(function(error) {
-            console.log('Error on Register');
-        });
+        if (data.password !== data.confirmPassword) {
+            if (existedError) setExistedError(false);
+            setConfirmError(true);
+        } else {
+            axios.post(`${apiUrl}/users/register`, {
+                firstname: data.firstname,
+                lastname: data.lastname,
+                username: data.username,
+                password: data.password
+            }).then(res => {
+                if (res.data){
+                    cookies.set('token', res.data.token);
+                    window.location.replace('/');
+                } else {
+                    if (confirmError) setConfirmError(false);
+                    setExistedError(true);
+                }
+            }).catch(function(error) {
+                console.log('Error on Register');
+            });
+        }
     }
 
-    const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"};
+    const paperStyle={padding :20,height:'80vh',width:280, margin:"20px auto"};
     const avatarStyle={backgroundColor:'skyblue', height:'70px',width:'70px'};
     const iconStyle={transform:'scale(2.2)'};
     const btnstyle={margin:'15px 0'};
@@ -45,6 +54,17 @@ function Login() {
                     <h2>Đăng ký</h2>
                 </Grid>
                 <form onSubmit={handleSubmit(handleSubmitSignUp)}>
+                { confirmError && (
+                    <Alert variant="standard" severity="error" style={btnstyle}>
+                        Mật khẩu không trùng khớp!
+                    </Alert>)
+                }
+                { existedError && (
+                    <Alert variant="standard" severity="error" style={btnstyle}>
+                        Tên đăng nhập đã tồn tại!
+                    </Alert>)
+                }
+
                 <Grid container spacing={2} >
                     <Grid item xs={12} sm={6}>
                         <TextField {...register('firstname')}
