@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
+import { Link } from "react-router-dom";
 import { 
     AppBar,
     Box,
@@ -236,14 +237,8 @@ function HeaderMenu({ isLoggedIn, user, handleLogout }) {
                     </Box>
                 ) : (
                     <Box sx={{ marginLeft: 'auto' }}>
-                        <Button
-                            color="inherit"
-                            onClick={() => window.location.replace('/register')}
-                        >đăng ký</Button>
-                        <Button
-                            color="inherit"
-                            onClick={() => window.location.replace('/login')}
-                        >đăng nhập</Button>
+                        <Button component={Link} to={'/register'} color="inherit">đăng ký</Button>
+                        <Button component={Link} to={'/login'} color="inherit">đăng nhập</Button>
                     </Box>
                 )}
                 
