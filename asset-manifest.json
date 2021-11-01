@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/classroom-reactjs-app/static/css/main.ddba97c3.chunk.css",
-    "main.js": "/classroom-reactjs-app/static/js/main.ed74b762.chunk.js",
-    "main.js.map": "/classroom-reactjs-app/static/js/main.ed74b762.chunk.js.map",
+    "main.js": "/classroom-reactjs-app/static/js/main.73adee84.chunk.js",
+    "main.js.map": "/classroom-reactjs-app/static/js/main.73adee84.chunk.js.map",
     "runtime-main.js": "/classroom-reactjs-app/static/js/runtime-main.154e6181.js",
     "runtime-main.js.map": "/classroom-reactjs-app/static/js/runtime-main.154e6181.js.map",
-    "static/js/2.aeff79e5.chunk.js": "/classroom-reactjs-app/static/js/2.aeff79e5.chunk.js",
-    "static/js/2.aeff79e5.chunk.js.map": "/classroom-reactjs-app/static/js/2.aeff79e5.chunk.js.map",
+    "static/js/2.d3010e54.chunk.js": "/classroom-reactjs-app/static/js/2.d3010e54.chunk.js",
+    "static/js/2.d3010e54.chunk.js.map": "/classroom-reactjs-app/static/js/2.d3010e54.chunk.js.map",
     "index.html": "/classroom-reactjs-app/index.html",
     "static/css/main.ddba97c3.chunk.css.map": "/classroom-reactjs-app/static/css/main.ddba97c3.chunk.css.map",
-    "static/js/2.aeff79e5.chunk.js.LICENSE.txt": "/classroom-reactjs-app/static/js/2.aeff79e5.chunk.js.LICENSE.txt"
+    "static/js/2.d3010e54.chunk.js.LICENSE.txt": "/classroom-reactjs-app/static/js/2.d3010e54.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.154e6181.js",
-    "static/js/2.aeff79e5.chunk.js",
+    "static/js/2.d3010e54.chunk.js",
     "static/css/main.ddba97c3.chunk.css",
-    "static/js/main.ed74b762.chunk.js"
+    "static/js/main.73adee84.chunk.js"
   ]
 }
