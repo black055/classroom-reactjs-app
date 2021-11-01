@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core'
+import { Alert } from '@mui/material';
 import PersonSharpIcon from '@mui/icons-material/PersonSharp';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -8,12 +9,13 @@ import axios from "axios";
 import Cookies from 'universal-cookie';
 
 
-function Login(props) {
+function Login() {
     //const apiUrl = "https://btcn-3-webnc.herokuapp.com";
     const apiUrl = "http://localhost:3000";
 
     const cookies = new Cookies();
     const { register, handleSubmit } = useForm();
+    const [confirmError, setConfirmError] = useState(false);
 
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"};
     const avatarStyle={backgroundColor:'skyblue', height:'70px',width:'70px'};
@@ -21,6 +23,7 @@ function Login(props) {
     const btnstyle={margin:'0 0 10px 0'};
     const textFieldStyle = {margin:'0 0 15px 0'};
     const typoStyle =  {marginLeft: '10px'};
+    const errStyle={margin:'20px 0'};
 
     const handleSubmitSignUp = (data) => {
         axios.post(`${apiUrl}/users/login`, {
@@ -29,7 +32,9 @@ function Login(props) {
         }).then(res => {
             if (res.data){
                 cookies.set('token', res.data.token);
-                props.history.push('/');
+                window.location.replace('/');
+            } else {
+                setConfirmError(true);
             }
         }).catch(function(error) {
             console.log('Error on Authentication');
@@ -44,6 +49,11 @@ function Login(props) {
                     <h2>Đăng nhập</h2>
                 </Grid>
                 <form onSubmit={handleSubmit(handleSubmitSignUp)}>
+                { confirmError && (
+                    <Alert variant="standard" severity="error" style={errStyle}>
+                        Tên đăng nhập hoặc mật khẩu không đúng!
+                    </Alert>)
+                }
                 <TextField {...register('username')} style={textFieldStyle} autoFocus label="Tên đăng nhập" fullWidth variant="outlined" required/>
                 <TextField {...register('password')} style={textFieldStyle} type="password" label="Mật khẩu" fullWidth variant="outlined" required/>
                 <FormControlLabel
