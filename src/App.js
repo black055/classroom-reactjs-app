@@ -16,20 +16,23 @@ function App() {
     const cookies = new Cookies();
 
     useEffect(() => {
-        axios.get(`${apiUrl}/users/logged-in`, { withCredentials:true } )
-        .then(res => {
-            if (res.data && !isLoggedIn) {
-                setIsLoggedIn(true);
-                setUser(res.data);
-            }
-            else if (!res.data && isLoggedIn) {
-                setIsLoggedIn(false);
-                setUser(null);
-            }
-        })
-        .catch(error => {
-            console.log("check login error", error);
-        });
+        const token = cookies.get('token');
+        if (typeof token !== 'undefined') {
+            axios.get(`${apiUrl}/users/logged-in/${token}`, { withCredentials:true } )
+            .then(res => {
+                if (res.data && !isLoggedIn) {
+                    setIsLoggedIn(true);
+                    setUser(res.data);
+                }
+                else if (!res.data && isLoggedIn) {
+                    setIsLoggedIn(false);
+                    setUser(null);
+                }
+            })
+            .catch(error => {
+                console.log("check login error", error);
+            });
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
