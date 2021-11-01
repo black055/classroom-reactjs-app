@@ -6,7 +6,7 @@ import PersonSharpIcon from '@mui/icons-material/PersonSharp';
 import axios from "axios";
 import Cookies from 'universal-cookie';
 
-function Login() {
+function Register(props) {
     const apiUrl = "https://btcn-3-webnc.herokuapp.com";
     //const apiUrl = "http://localhost:3000";
 
@@ -29,7 +29,7 @@ function Login() {
             }).then(res => {
                 if (res.data){
                     cookies.set('token', res.data.token);
-                    window.location.replace('/');
+                    props.history.push('/');
                 } else {
                     if (confirmError) setConfirmError(false);
                     setExistedError(true);
@@ -122,4 +122,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;

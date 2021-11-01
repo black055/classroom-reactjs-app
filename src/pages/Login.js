@@ -8,9 +8,9 @@ import axios from "axios";
 import Cookies from 'universal-cookie';
 
 
-function Login() {
-    const apiUrl = "https://btcn-3-webnc.herokuapp.com";
-    //const apiUrl = "http://localhost:3000";
+function Login(props) {
+    //const apiUrl = "https://btcn-3-webnc.herokuapp.com";
+    const apiUrl = "http://localhost:3000";
 
     const cookies = new Cookies();
     const { register, handleSubmit } = useForm();
@@ -29,7 +29,7 @@ function Login() {
         }).then(res => {
             if (res.data){
                 cookies.set('token', res.data.token);
-                window.location.replace('/');
+                props.history.push('/');
             }
         }).catch(function(error) {
             console.log('Error on Authentication');
